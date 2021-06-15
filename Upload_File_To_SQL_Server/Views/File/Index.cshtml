@@ -1,0 +1,27 @@
+﻿
+@model IEnumerable<Upload_File_To_SQL_Server.Models.File>
+
+<a class="btn btn-primary" asp-controller="File" asp-action="Upload">Upload</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.FileName)</th>
+            <th>Download</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var file in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => file.FileName)
+                </td>
+                <td>
+                    @Html.ActionLink("Download", "Download", "File", new { fileId = file.Id }, null)
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
